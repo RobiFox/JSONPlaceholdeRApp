@@ -40,6 +40,8 @@ class PostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        PostContent.clear()
+
         val view = inflater.inflate(R.layout.fragment_post_list, container, false)
 
         // Set the adapter

@@ -21,6 +21,11 @@ object PostContent {
      */
     val ITEM_MAP: MutableMap<String, PostItem> = HashMap()
 
+    public fun clear() {
+        ITEMS.clear()
+        ITEM_MAP.clear()
+    }
+
     public fun addItem(item: PostItem) {
         ITEMS.add(item)
         ITEM_MAP[item.id] = item

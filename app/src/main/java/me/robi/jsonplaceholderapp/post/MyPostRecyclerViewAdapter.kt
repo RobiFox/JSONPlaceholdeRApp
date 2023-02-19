@@ -16,10 +16,6 @@ class MyPostRecyclerViewAdapter(
     private val values: List<PostItem>
 ) : RecyclerView.Adapter<MyPostRecyclerViewAdapter.ViewHolder>() {
 
-    fun updateChanges() {
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
