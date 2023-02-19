@@ -1,4 +1,4 @@
-package me.robi.jsonplaceholderapp.post
+package me.robi.jsonplaceholderapp.posts
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

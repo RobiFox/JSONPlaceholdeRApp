@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/postFragment"
-        android:name="me.robi.jsonplaceholderapp.post.PostFragment"
+        android:name="me.robi.jsonplaceholderapp.posts.PostFragment"
         android:label="fragment_post_list"
         tools:layout="@layout/fragment_post_list" >
         <argument

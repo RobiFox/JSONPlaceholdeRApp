@@ -1,4 +1,4 @@
-package me.robi.jsonplaceholderapp.post
+package me.robi.jsonplaceholderapp.posts
 
 import java.util.ArrayList
 import java.util.HashMap

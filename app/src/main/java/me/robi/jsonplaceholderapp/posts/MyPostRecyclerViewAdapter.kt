@@ -1,11 +1,11 @@
-package me.robi.jsonplaceholderapp.post
+package me.robi.jsonplaceholderapp.posts
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 
-import me.robi.jsonplaceholderapp.post.PostContent.PostItem
+import me.robi.jsonplaceholderapp.posts.PostContent.PostItem
 import me.robi.jsonplaceholderapp.databinding.FragmentPostBinding
 
 /**
