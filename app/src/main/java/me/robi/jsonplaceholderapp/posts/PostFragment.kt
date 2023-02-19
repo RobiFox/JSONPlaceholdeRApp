@@ -36,7 +36,8 @@ class PostFragment : JsonFragment() {
                 PostContent.PostItem(
                     i.toString(),
                     item["title"].toString(),
-                    item["body"].toString()
+                    item["body"].toString(),
+                    item["userId"] as Int
                 ))
         }
     }

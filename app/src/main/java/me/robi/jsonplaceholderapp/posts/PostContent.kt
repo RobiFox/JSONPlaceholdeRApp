@@ -43,7 +43,7 @@ object PostContent {
     /**
      * A placeholder item representing a piece of content.
      */
-    data class PostItem(val id: String, val content: String, val details: String) {
+    data class PostItem(val id: String, val content: String, val details: String, val authorId: Int) {
         override fun toString(): String = content
     }
 }

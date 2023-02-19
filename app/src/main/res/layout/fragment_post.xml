@@ -24,6 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="very very very very long, even longer head to test overflow"
             android:textAppearance="?attr/textAppearanceListItem" />
 
@@ -33,6 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="-18dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="body"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="#757575" />

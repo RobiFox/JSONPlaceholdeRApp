@@ -33,6 +33,7 @@ class MyPostRecyclerViewAdapter(
         holder.idView.text = item.id
         holder.contentView.text = item.content
         holder.body.text = item.details;
+        holder.authorId.text = item.authorId.toString();
     }
 
     override fun getItemCount(): Int = values.size
@@ -41,6 +42,7 @@ class MyPostRecyclerViewAdapter(
         val idView: TextView = binding.itemNumber
         val contentView: TextView = binding.content
         val body: TextView = binding.details
+        val authorId: TextView = binding.authorId
 
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
