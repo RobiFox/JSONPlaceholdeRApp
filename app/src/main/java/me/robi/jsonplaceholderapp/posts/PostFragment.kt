@@ -8,25 +8,38 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.robi.jsonplaceholderapp.R
+import me.robi.jsonplaceholderapp.fragments.JsonFragment
 import org.json.JSONArray
-import org.json.JSONObject
-import java.net.HttpURLConnection
 import java.net.URL
-import javax.net.ssl.HttpsURLConnection
 
 /**
  * A fragment representing a list of Items.
  */
-class PostFragment : Fragment() {
+class PostFragment : JsonFragment() {
 
     private var columnCount = 1
-    val scope = CoroutineScope(Dispatchers.IO)
+    override fun getUrl(): String {
+        return "https://jsonplaceholder.typicode.com/posts";
+    }
+
+    override fun applyData(response: String) {
+        val jsonArray = JSONArray(response);
+        for(i in 0 until jsonArray.length()) {
+            val item = jsonArray.getJSONObject(i);
+            println(item.toString());
+            PostContent.addItem(
+                PostContent.PostItem(
+                    i.toString(),
+                    item["title"].toString(),
+                    item["body"].toString()
+                ))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +54,6 @@ class PostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         PostContent.clear()
-
         val view = inflater.inflate(R.layout.fragment_post_list, container, false)
 
         // Set the adapter
@@ -54,33 +66,8 @@ class PostFragment : Fragment() {
                 adapter = MyPostRecyclerViewAdapter(PostContent.ITEMS)
             }
         }
-
-        scope.launch {
-            val link = arguments?.getString("requestLink");
-            val jsonArray = JSONArray(link?.let { getPosts(it) });
-
-            for(i in 0 until jsonArray.length()) {
-                val item = jsonArray.getJSONObject(i);
-                println(item.toString());
-                PostContent.addItem(
-                    PostContent.PostItem(
-                        i.toString(),
-                        item["title"].toString(),
-                        item["body"].toString()
-                    ))
-            }
-            activity?.runOnUiThread {
-                view.requestLayout()
-            }
-        }
-
+        super.onCreateView(inflater, container, savedInstanceState)
         return view
-    }
-
-    suspend fun getPosts(url: String): String {
-        return withContext(scope.coroutineContext) {
-            URL(url).readText()
-        }
     }
 
     companion object {
