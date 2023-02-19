@@ -8,8 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import me.robi.jsonplaceholderapp.R
+import org.json.JSONArray
 import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
+import javax.net.ssl.HttpsURLConnection
 
 /**
  * A fragment representing a list of Items.
@@ -17,6 +26,7 @@ import org.json.JSONObject
 class PostFragment : Fragment() {
 
     private var columnCount = 1
+    val scope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +53,32 @@ class PostFragment : Fragment() {
             }
         }
 
-        val link = arguments?.getString("requestLink");
+        scope.launch {
+            val link = arguments?.getString("requestLink");
+            val jsonArray = JSONArray(link?.let { getPosts(it) });
+
+            for(i in 0 until jsonArray.length()) {
+                val item = jsonArray.getJSONObject(i);
+                println(item.toString());
+                PostContent.addItem(
+                    PostContent.PostItem(
+                        i.toString(),
+                        item["title"].toString(),
+                        item["body"].toString()
+                    ))
+            }
+            activity?.runOnUiThread {
+                view.requestLayout()
+            }
+        }
+
         return view
+    }
+
+    suspend fun getPosts(url: String): String {
+        return withContext(scope.coroutineContext) {
+            URL(url).readText()
+        }
     }
 
     companion object {

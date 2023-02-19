@@ -16,6 +16,10 @@ class MyPostRecyclerViewAdapter(
     private val values: List<PostItem>
 ) : RecyclerView.Adapter<MyPostRecyclerViewAdapter.ViewHolder>() {
 
+    fun updateChanges() {
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
@@ -32,6 +36,7 @@ class MyPostRecyclerViewAdapter(
         val item = values[position]
         holder.idView.text = item.id
         holder.contentView.text = item.content
+        holder.body.text = item.details;
     }
 
     override fun getItemCount(): Int = values.size
@@ -39,6 +44,7 @@ class MyPostRecyclerViewAdapter(
     inner class ViewHolder(binding: FragmentPostBinding) : RecyclerView.ViewHolder(binding.root) {
         val idView: TextView = binding.itemNumber
         val contentView: TextView = binding.content
+        val body: TextView = binding.details
 
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
