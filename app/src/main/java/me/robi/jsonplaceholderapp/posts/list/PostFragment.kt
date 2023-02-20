@@ -23,6 +23,7 @@ class PostFragment : JsonFragment() {
 
     override fun applyData(response: String) {
         val jsonArray = JSONArray(response);
+        PostContent.clear()
         for(i in 0 until jsonArray.length()) {
             val item = jsonArray.getJSONObject(i);
             println(item.toString());
@@ -49,7 +50,6 @@ class PostFragment : JsonFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        PostContent.clear()
         val view = inflater.inflate(R.layout.fragment_post_list, container, false)
 
         // Set the adapter

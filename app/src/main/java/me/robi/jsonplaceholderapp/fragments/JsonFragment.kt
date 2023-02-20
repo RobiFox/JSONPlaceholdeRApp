@@ -23,8 +23,9 @@ abstract class JsonFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         scope.launch {
-            applyData(getPosts(getUrl()));
+            val response = getPosts(getUrl());
             activity?.runOnUiThread {
+                applyData(response);
                 view?.requestLayout()
             }
         }
