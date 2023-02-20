@@ -46,7 +46,7 @@ class MyPostRecyclerViewAdapter(
                 bundleOf(
                     PARAM_TITLE to item.content,
                     PARAM_BODY to item.details,
-                    PARAM_USER to item.id,
+                    PARAM_USER to item.authorId,
                 ))
         }
     }
