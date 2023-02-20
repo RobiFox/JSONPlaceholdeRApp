@@ -6,8 +6,6 @@ import java.util.HashMap
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
- *
- * TODO: Replace all uses of this class before publishing your app.
  */
 object PostContent {
 
@@ -41,7 +39,7 @@ object PostContent {
     }
 
     /**
-     * A placeholder item representing a piece of content.
+     * A post item representing a piece of content.
      */
     data class PostItem(val id: String, val content: String, val details: String, val authorId: Int) {
         override fun toString(): String = content

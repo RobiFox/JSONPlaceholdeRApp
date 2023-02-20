@@ -16,7 +16,6 @@ import me.robi.jsonplaceholderapp.posts.individual.*
 
 /**
  * [RecyclerView.Adapter] that can display a [PostItem].
- * TODO: Replace the implementation with code for your data type.
  */
 class MyPostRecyclerViewAdapter(
     private val values: List<PostItem>,
