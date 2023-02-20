@@ -2,7 +2,6 @@ package me.robi.jsonplaceholderapp.posts.list
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.os.bundleOf
@@ -35,7 +34,7 @@ class MyPostRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
+        holder.idView.text = item.id.toString()
         holder.contentView.text = item.content
         holder.body.text = item.details;
         holder.authorId.text = item.authorId.toString();
@@ -43,9 +42,7 @@ class MyPostRecyclerViewAdapter(
         holder.itemView.setOnClickListener {
             fragment.findNavController().navigate(R.id.action_postFragment_to_individualPostFragment,
                 bundleOf(
-                    PARAM_TITLE to item.content,
-                    PARAM_BODY to item.details,
-                    PARAM_USER to item.authorId,
+                    ARG_POST_ID to item.id
                 ))
         }
     }

@@ -28,7 +28,7 @@ class PostFragment : JsonFragment(), ICacheable {
             val item = jsonArray.getJSONObject(i);
             PostContent.addItem(
                 PostContent.PostItem(
-                    i.toString(),
+                    item["id"] as Int,
                     item["title"].toString(),
                     item["body"].toString(),
                     item["userId"] as Int

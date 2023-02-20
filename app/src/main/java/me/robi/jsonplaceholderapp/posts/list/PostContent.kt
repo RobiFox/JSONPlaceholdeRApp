@@ -17,7 +17,7 @@ object PostContent {
     /**
      * A map of sample (placeholder) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, PostItem> = HashMap()
+    val ITEM_MAP: MutableMap<Int, PostItem> = HashMap()
 
     public fun clear() {
         ITEMS.clear()
@@ -41,7 +41,7 @@ object PostContent {
     /**
      * A post item representing a piece of content.
      */
-    data class PostItem(val id: String, val content: String, val details: String, val authorId: Int) {
+    data class PostItem(val id: Int, val content: String, val details: String, val authorId: Int) {
         override fun toString(): String = content
     }
 }

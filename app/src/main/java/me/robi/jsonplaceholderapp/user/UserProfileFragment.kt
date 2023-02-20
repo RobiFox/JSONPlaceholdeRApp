@@ -13,7 +13,7 @@ import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-public const val ARG_ID = "id"
+public const val ARG_USER_ID = "id"
 
 /**
  * A simple [Fragment] subclass.
@@ -26,7 +26,7 @@ class UserProfileFragment : JsonFragment(), ICacheable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            paramId = it.getInt(ARG_ID)
+            paramId = it.getInt(ARG_USER_ID)
         }
     }
 
@@ -71,7 +71,7 @@ class UserProfileFragment : JsonFragment(), ICacheable {
         fun newInstance(id: Int) =
             UserProfileFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_ID, id)
+                    putInt(ARG_USER_ID, id)
                 }
             }
     }
