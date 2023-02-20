@@ -1,21 +1,15 @@
-package me.robi.jsonplaceholderapp.posts
+package me.robi.jsonplaceholderapp.posts.list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import me.robi.jsonplaceholderapp.R
 import me.robi.jsonplaceholderapp.fragments.JsonFragment
 import org.json.JSONArray
-import java.net.URL
 
 /**
  * A fragment representing a list of Items.
@@ -38,7 +32,8 @@ class PostFragment : JsonFragment() {
                     item["title"].toString(),
                     item["body"].toString(),
                     item["userId"] as Int
-                ))
+                )
+            )
         }
     }
 
@@ -64,7 +59,7 @@ class PostFragment : JsonFragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyPostRecyclerViewAdapter(PostContent.ITEMS)
+                adapter = MyPostRecyclerViewAdapter(PostContent.ITEMS, this@PostFragment)
             }
         }
         super.onCreateView(inflater, container, savedInstanceState)

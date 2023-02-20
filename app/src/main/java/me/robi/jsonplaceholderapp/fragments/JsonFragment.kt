@@ -9,9 +9,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import me.robi.jsonplaceholderapp.posts.PostContent
-import org.json.JSONArray
-import org.json.JSONObject
 import java.net.URL
 
 abstract class JsonFragment : Fragment() {
