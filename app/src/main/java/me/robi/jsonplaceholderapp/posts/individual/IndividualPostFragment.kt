@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import me.robi.jsonplaceholderapp.R
 
@@ -37,7 +38,9 @@ class IndividualPostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_individual_post, container, false)
-        view.findViewById<TextView>(R.id.title_header).text = arguments.let { paramTitle }
+        view.findViewById<TextView>(R.id.individual_post_title_header).text = arguments.let { paramTitle }
+        view.findViewById<TextView>(R.id.individual_post_body_text).text = arguments.let { paramBody }
+        view.findViewById<Button>(R.id.individual_post_user_button).text = String.format(getString(R.string.check_profile), arguments.let { paramUser })
 
         // Inflate the layout for this fragment
         return view
