@@ -30,9 +30,6 @@ class UserProfileFragment : JsonFragment() {
     }
 
     override fun getUrl(bundle: Bundle?): String {
-        println("HEHE " + String.format("https://jsonplaceholder.typicode.com/users/%s", bundle.let {
-            paramId
-        }));
         return String.format("https://jsonplaceholder.typicode.com/users/%s", bundle.let {
             paramId
         })

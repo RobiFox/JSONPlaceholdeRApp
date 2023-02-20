@@ -25,8 +25,7 @@ class PostFragment : JsonFragment() {
         val jsonArray = JSONArray(response);
         PostContent.clear()
         for(i in 0 until jsonArray.length()) {
-            val item = jsonArray.getJSONObject(i);
-            println(item.toString());
+            val item = jsonArray.getJSONObject(i);s
             PostContent.addItem(
                 PostContent.PostItem(
                     i.toString(),
