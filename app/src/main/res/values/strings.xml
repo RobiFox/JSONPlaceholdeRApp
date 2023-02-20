@@ -15,4 +15,7 @@
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="next">Next</string>
     <string name="company">Company</string>
+    <string name="fragment_posts">Posts</string>
+    <string name="fragment_individual_post">Individual Post</string>
+    <string name="user">User</string>
 </resources>
