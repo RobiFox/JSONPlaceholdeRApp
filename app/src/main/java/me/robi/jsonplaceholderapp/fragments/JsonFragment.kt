@@ -14,7 +14,7 @@ import java.net.URL
 abstract class JsonFragment : Fragment() {
     val scope = CoroutineScope(Dispatchers.IO)
 
-    abstract fun getUrl() : String;
+    abstract fun getUrl(bundle: Bundle?) : String;
     abstract fun applyData(response: String);
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ abstract class JsonFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         scope.launch {
-            val response = getPosts(getUrl());
+            val response = getPosts(getUrl(savedInstanceState));
             activity?.runOnUiThread {
                 applyData(response);
                 view?.requestLayout()
