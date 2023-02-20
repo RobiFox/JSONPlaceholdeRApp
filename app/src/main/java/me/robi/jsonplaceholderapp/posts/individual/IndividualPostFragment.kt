@@ -22,8 +22,6 @@ const val PARAM_USER = "user"
  * A simple [Fragment] subclass.
  * Use the [IndividualPostFragment.newInstance] factory method to
  * create an instance of this fragment.
- *
- * TODO replace with JsonFragment?
  */
 class IndividualPostFragment : Fragment() {
     private var paramTitle: String? = null

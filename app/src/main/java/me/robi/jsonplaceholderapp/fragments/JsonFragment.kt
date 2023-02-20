@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import me.robi.jsonplaceholderapp.CacheSingleton
 import java.net.URL
 
 abstract class JsonFragment : Fragment() {
@@ -22,10 +23,18 @@ abstract class JsonFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val url = getUrl(savedInstanceState);
+        if(this is ICacheable && CacheSingleton.caches.containsKey(url)) {
+            CacheSingleton.caches[url]?.let { applyData(it) };
+            if(!this.reFetchIfCached()) return view;
+        }
         scope.launch {
-            val response = getPosts(getUrl(savedInstanceState));
+            val response = getPosts(url)
             activity?.runOnUiThread {
                 applyData(response);
+                if(this is ICacheable) {
+                    CacheSingleton.caches[url] = response;
+                }
                 view?.requestLayout()
             }
         }
