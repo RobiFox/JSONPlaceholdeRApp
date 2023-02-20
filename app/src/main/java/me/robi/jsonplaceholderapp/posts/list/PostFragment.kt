@@ -12,12 +12,12 @@ import me.robi.jsonplaceholderapp.fragments.JsonFragment
 import org.json.JSONArray
 
 /**
- * A fragment representing a list of Items.
+ * A fragment representing a list of Items
  */
 class PostFragment : JsonFragment() {
 
     private var columnCount = 1
-    override fun getUrl(): String {
+    override fun getUrl(bundle: Bundle?): String {
         return "https://jsonplaceholder.typicode.com/posts";
     }
 

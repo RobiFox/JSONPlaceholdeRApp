@@ -44,5 +44,18 @@
         android:id="@+id/individualPostFragment"
         android:name="me.robi.jsonplaceholderapp.posts.individual.IndividualPostFragment"
         android:label="fragment_individual_post"
-        tools:layout="@layout/fragment_individual_post" />
+        tools:layout="@layout/fragment_individual_post" >
+        <action
+            android:id="@+id/action_individualPostFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="me.robi.jsonplaceholderapp.user.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <argument
+            android:name="id"
+            app:argType="integer"/>
+    </fragment>
 </navigation>

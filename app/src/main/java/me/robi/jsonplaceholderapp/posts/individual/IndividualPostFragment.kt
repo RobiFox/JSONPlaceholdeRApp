@@ -7,7 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import me.robi.jsonplaceholderapp.R
+import me.robi.jsonplaceholderapp.user.ARG_ID
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 const val PARAM_TITLE = "title"
@@ -18,6 +22,8 @@ const val PARAM_USER = "user"
  * A simple [Fragment] subclass.
  * Use the [IndividualPostFragment.newInstance] factory method to
  * create an instance of this fragment.
+ *
+ * TODO replace with JsonFragment?
  */
 class IndividualPostFragment : Fragment() {
     private var paramTitle: String? = null
@@ -40,7 +46,15 @@ class IndividualPostFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_individual_post, container, false)
         view.findViewById<TextView>(R.id.individual_post_title_header).text = arguments.let { paramTitle }
         view.findViewById<TextView>(R.id.individual_post_body_text).text = arguments.let { paramBody }
-        view.findViewById<Button>(R.id.individual_post_user_button).text = String.format(getString(R.string.check_profile), arguments.let { paramUser })
+        view.findViewById<Button>(R.id.individual_post_user_button).let {
+            it.text = String.format(getString(R.string.check_profile), arguments.let { paramUser })
+            it.setOnClickListener{
+                findNavController().navigate(R.id.action_individualPostFragment_to_userProfileFragment,
+                bundleOf(
+                    ARG_ID to arguments.let { paramUser }
+                ))
+            }
+        }
 
         // Inflate the layout for this fragment
         return view
