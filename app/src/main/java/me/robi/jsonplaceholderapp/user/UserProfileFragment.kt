@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import me.robi.jsonplaceholderapp.R
+import me.robi.jsonplaceholderapp.fragments.ICacheable
 import me.robi.jsonplaceholderapp.fragments.JsonFragment
 import org.json.JSONObject
 
@@ -19,7 +20,7 @@ public const val ARG_ID = "id"
  * Use the [UserProfileFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UserProfileFragment : JsonFragment() {
+class UserProfileFragment : JsonFragment(), ICacheable {
     private var paramId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,5 +74,9 @@ class UserProfileFragment : JsonFragment() {
                     putInt(ARG_ID, id)
                 }
             }
+    }
+
+    override fun reFetchIfCached(): Boolean {
+        return false
     }
 }

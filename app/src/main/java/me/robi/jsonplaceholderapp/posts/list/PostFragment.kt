@@ -8,13 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.robi.jsonplaceholderapp.R
+import me.robi.jsonplaceholderapp.fragments.ICacheable
 import me.robi.jsonplaceholderapp.fragments.JsonFragment
 import org.json.JSONArray
 
 /**
  * A fragment representing a list of Items
  */
-class PostFragment : JsonFragment() {
+class PostFragment : JsonFragment(), ICacheable {
 
     private var columnCount = 1
     override fun getUrl(bundle: Bundle?): String {
@@ -23,7 +24,6 @@ class PostFragment : JsonFragment() {
 
     override fun applyData(response: String) {
         val jsonArray = JSONArray(response);
-        PostContent.clear()
         for(i in 0 until jsonArray.length()) {
             val item = jsonArray.getJSONObject(i);
             PostContent.addItem(
@@ -76,5 +76,9 @@ class PostFragment : JsonFragment() {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
+    }
+
+    override fun reFetchIfCached(): Boolean {
+        return false
     }
 }
