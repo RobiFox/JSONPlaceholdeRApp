@@ -42,7 +42,7 @@ class MyPostRecyclerViewAdapter(
         holder.itemView.setOnClickListener {
             fragment.findNavController().navigate(R.id.action_postFragment_to_individualPostFragment,
                 bundleOf(
-                    ARG_POST_ID to item.id
+                    ARG_POST to item
                 ))
         }
     }

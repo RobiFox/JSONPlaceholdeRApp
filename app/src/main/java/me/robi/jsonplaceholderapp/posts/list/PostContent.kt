@@ -41,7 +41,7 @@ object PostContent {
     /**
      * A post item representing a piece of content.
      */
-    data class PostItem(val id: Int, val content: String, val details: String, val authorId: Int) {
+    data class PostItem(val id: Int, val content: String, val details: String, val authorId: Int) : java.io.Serializable {
         override fun toString(): String = content
     }
 }
