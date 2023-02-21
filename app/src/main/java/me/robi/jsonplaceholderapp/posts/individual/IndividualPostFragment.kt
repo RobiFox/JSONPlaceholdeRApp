@@ -55,11 +55,11 @@ class IndividualPostFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = inflater.inflate(R.layout.fragment_individual_post, container, false)
         view!!.findViewById<TextView>(R.id.individual_post_title_header).text = paramPost?.content
-        view!!.findViewById<TextView>(R.id.individual_post_body_text).text = paramPost?.details
-        view!!.findViewById<Button>(R.id.individual_post_user_button).let {
+        view.findViewById<TextView>(R.id.individual_post_body_text).text = paramPost?.details
+        view.findViewById<Button>(R.id.individual_post_user_button).let {
             it.text = String.format(getString(R.string.check_profile), arguments.let { paramPost?.authorId })
             it.setOnClickListener{
                 findNavController().navigate(R.id.action_individualPostFragment_to_userProfileFragment,
