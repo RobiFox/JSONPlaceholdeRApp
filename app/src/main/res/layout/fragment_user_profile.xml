@@ -22,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:text="First Last"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -31,7 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="at@gmail.com"
             android:textAlignment="center" />
 
         <TextView
@@ -39,7 +37,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="1-770-736-8031 x56442"
             android:textAlignment="center" />
 
         <TextView
@@ -47,7 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="www.google.com"
             android:textAlignment="center" />
 
         <Space
@@ -69,7 +65,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:text="Google"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
@@ -78,7 +73,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:text="&quot;Catch phrase&quot;"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textStyle="italic" />

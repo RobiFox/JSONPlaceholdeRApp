@@ -1,4 +1,4 @@
-package me.robi.jsonplaceholderapp.user
+package me.robi.jsonplaceholderapp.user.individual
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,6 @@ import me.robi.jsonplaceholderapp.fragments.ICacheable
 import me.robi.jsonplaceholderapp.fragments.JsonFragment
 import org.json.JSONObject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 public const val ARG_USER_ID = "id"
 
 /**

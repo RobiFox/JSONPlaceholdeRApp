@@ -12,21 +12,11 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_postFragment"
             app:destination="@id/postFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="me.robi.jsonplaceholderapp.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_FirstFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -51,11 +41,20 @@
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="me.robi.jsonplaceholderapp.user.UserProfileFragment"
+        android:name="me.robi.jsonplaceholderapp.user.individual.UserProfileFragment"
         android:label="@string/user"
         tools:layout="@layout/fragment_user_profile" >
         <argument
             android:name="id"
             app:argType="integer"/>
+    </fragment>
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="me.robi.jsonplaceholderapp.user.list.UsersFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_user_list" >
+        <action
+            android:id="@+id/action_usersFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
 </navigation>

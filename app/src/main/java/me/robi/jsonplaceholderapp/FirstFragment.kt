@@ -34,7 +34,10 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_postFragment, bundleOf("requestLink" to "https://jsonplaceholder.typicode.com/posts"))
+            findNavController().navigate(R.id.action_FirstFragment_to_postFragment)
+        }
+        binding.buttonSecond.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_usersFragment)
         }
     }
 

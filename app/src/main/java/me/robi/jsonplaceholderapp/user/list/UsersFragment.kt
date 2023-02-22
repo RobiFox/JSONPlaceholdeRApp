@@ -1,4 +1,4 @@
-package me.robi.jsonplaceholderapp.posts.list
+package me.robi.jsonplaceholderapp.user.list
 
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,29 +13,11 @@ import me.robi.jsonplaceholderapp.fragments.JsonFragment
 import org.json.JSONArray
 
 /**
- * A fragment representing a list of Items
+ * A fragment representing a list of Items.
  */
-class PostFragment : JsonFragment(), ICacheable {
+class UsersFragment : JsonFragment(), ICacheable {
 
     private var columnCount = 1
-    override fun getUrl(bundle: Bundle?): String {
-        return "https://jsonplaceholder.typicode.com/posts";
-    }
-
-    override fun applyData(response: String) {
-        val jsonArray = JSONArray(response);
-        for(i in 0 until jsonArray.length()) {
-            val item = jsonArray.getJSONObject(i);
-            PostContent.addItem(
-                PostContent.PostItem(
-                    item["id"] as Int,
-                    item["title"].toString(),
-                    item["body"].toString(),
-                    item["userId"] as Int
-                )
-            )
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +27,28 @@ class PostFragment : JsonFragment(), ICacheable {
         }
     }
 
+    override fun getUrl(bundle: Bundle?): String {
+        return "https://jsonplaceholder.typicode.com/users";
+    }
+
+    override fun applyData(response: String) {
+        val jsonArray = JSONArray(response);
+        for(i in 0 until jsonArray.length()) {
+            val item = jsonArray.getJSONObject(i);
+            UserContent.addItem(
+                UserContent.UserItem(
+                    item["id"] as Int,
+                    item["name"].toString()
+                )
+            )
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_post_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_user_list, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -58,7 +57,7 @@ class PostFragment : JsonFragment(), ICacheable {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyPostRecyclerViewAdapter(PostContent.ITEMS, this@PostFragment)
+                adapter = MyUsersRecyclerViewAdapter(UserContent.ITEMS, this@UsersFragment)
             }
         }
         super.onCreateView(inflater, container, savedInstanceState)
@@ -66,7 +65,7 @@ class PostFragment : JsonFragment(), ICacheable {
     }
 
     override fun reFetchIfCached(): Boolean {
-        return false
+        return true;
     }
 
     companion object {
@@ -75,7 +74,7 @@ class PostFragment : JsonFragment(), ICacheable {
 
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            PostFragment().apply {
+            UsersFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
